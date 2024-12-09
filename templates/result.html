@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Результаты Анализа</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f5f5f5; }
+        .container { width: 60%; margin: auto; padding: 20px; }
+        .weather-box { background-color: #ffffff; padding: 15px; margin-bottom: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        .good { border-left: 5px solid #4CAF50; }
+        .bad { border-left: 5px solid #f44336; }
+        .error { border-left: 5px solid #ff9800; }
+        .error-message { color: red; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Результаты Анализа</h2>
+
+        <div class="weather-box
+            {% if start_weather.weather_status == 'Плохие' %}
+                bad
+            {% elif start_weather.weather_status == 'Хорошие' %}
+                good
+            {% else %}
+                error
+            {% endif %}">
+            <h3>{{ start_weather.city }}</h3>
+            {% if start_weather.error %}
+                <p class="error-message">{{ start_weather.error }}</p>
+            {% else %}
+                <p>Температура: {{ start_weather.temperature }}°C</p>
+                <p>Влажность: {{ start_weather.humidity }}%</p>
+                <p>Скорость ветра: {{ start_weather.wind_speed_kmh }} км/ч</p>
+                <p>Вероятность осадков: {{ start_weather.precipitation_probability }}%</p>
+                <p>Погодные условия: {{ start_weather.weather_status }}</p>
+            {% endif %}
+        </div>
+
+        <div class="weather-box
+            {% if end_weather.weather_status == 'Плохие' %}
+                bad
+            {% elif end_weather.weather_status == 'Хорошие' %}
+                good
+            {% else %}
+                error
+            {% endif %}">
+            <h3>{{ end_weather.city }}</h3>
+            {% if end_weather.error %}
+                <p class="error-message">{{ end_weather.error }}</p>
+            {% else %}
+                <p>Температура: {{ end_weather.temperature }}°C</p>
+                <p>Влажность: {{ end_weather.humidity }}%</p>
+                <p>Скорость ветра: {{ end_weather.wind_speed_kmh }} км/ч</p>
+                <p>Вероятность осадков: {{ end_weather.precipitation_probability }}%</p>
+                <p>Погодные условия: {{ end_weather.weather_status }}</p>
+            {% endif %}
+        </div>
+
+        <a href="/">Назад</a>
+    </div>
+</body>
+</html>

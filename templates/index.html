@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Анализ Погоды по Маршруту</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f8ff; }
+        .container { width: 50%; margin: auto; padding: 20px; }
+        input[type=text] { width: 100%; padding: 10px; margin: 5px 0 10px 0; }
+        input[type=submit] { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        input[type=submit]:hover { background-color: #45a049; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Анализ Погоды в Городе А и Б</h2>
+        <form method="POST">
+            <label for="start_city">Город А:</label>
+            <input type="text" id="start_city" name="start_city" required>
+
+            <label for="end_city">Город Б:</label>
+            <input type="text" id="end_city" name="end_city" required>
+
+            <input type="submit" value="Анализировать">
+        </form>
+    </div>
+</body>
+</html>
